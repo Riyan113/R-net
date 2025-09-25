@@ -86,98 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
-document
 
-  .getElementById("contactForm")
-
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const message = document.getElementById("message").value;
-    const sendButton = document.getElementById("sendButton");
-
-    sendButton.disabled = true;
-    sendButton.innerText = "Loading...";
-
-    const webhookURL =
-      "https://discord.com/api/webhooks/1343050693388271748/htOZtW1VGdSzEp2NuNf3q9wmZtig4MoJvKNM_UmNnMokzpGM8PPja3RZ-_DcN_8_mQF6";
-
-    const payload = {
-      embeds: [
-        {
-          title: "📩 Pesan Baru Masuk!",
-          color: 0x3498db,
-          fields: [
-            {
-              name: "👤 Nama",
-              value: `\`${name}\``,
-              inline: true,
-            },
-            {
-              name: "📧 Email",
-              value: `\`${email}\``,
-              inline: true,
-            },
-            {
-              name: "📝 Pesan",
-              value: message || "_(Tidak ada pesan)_",
-            },
-          ],
-          timestamp: new Date().toISOString(),
-          footer: {
-            text: "Dikirim melalui Formulir",
-            icon_url: "https://cdn-icons-png.flaticon.com/512/281/281769.png",
-          },
-        },
-      ],
-    };
-    fetch(webhookURL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    })
-      .then((response) => {
-        console.log("✅ Pesan berhasil dikirim!");
-
-        sendButton.disabled = false;
-        sendButton.innerText = "Send";
-
-        if (response.ok) {
-          Swal.fire({
-            title: "Success!",
-            text: "Your message has been sent successfully! 🎉",
-            icon: "success",
-            confirmButtonColor: "#4CAF50",
-            confirmButtonText: "OK!",
-          });
-          document.getElementById("contactForm").reset();
-        } else {
-          Swal.fire({
-            title: "Failed!",
-            text: "An error occurred. Please try again later. 😞",
-            icon: "error",
-            confirmButtonColor: "#d33",
-            confirmButtonText: "OK!",
-          });
-        }
-      })
-      .catch((error) => {
-        console.error("❌ Error:", error);
-
-        sendButton.disabled = false;
-        sendButton.innerText = "Send";
-
-        Swal.fire({
-          title: "Oops!",
-          text: "A network error occurred. Please check your internet connection. 🔌",
-          icon: "warning",
-          confirmButtonColor: "#f39c12",
-          confirmButtonText: "OK!",
-        });
-      });
-  });
 const canvas = document.getElementById("starCanvas");
 const ctx = canvas.getContext("2d");
 
@@ -263,5 +172,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
   });
 });
+
+
 
 
