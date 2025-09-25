@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  color: rgb(255, 255, 255);
+  background: rgb(104, 104, 104);
+}
+
+.neon {
+  text-shadow: 0 0 5px rgb(2, 30, 152), 0 0 10px rgb(9, 0, 138), 0 0 15px rgb(22, 0, 134);
+  color: rgb(0, 59, 252);
+}
+
+#changing-text::after {
+  content: "|";
+  animation: blink 0.7s infinite;
+}
+/* 
+#starCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+} */
+
+.cihuy {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cihuy:hover {
+  transform: scale(1.1) rotateY(10deg) rotateX(-10deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
